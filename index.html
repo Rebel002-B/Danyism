@@ -137,67 +137,62 @@ h2 {
 <div class="footer">
   Made for Minecraft Bedrock players | Designed for fun 🧱
 </div>
-```
 
-  </div>
+ <script>
+  const BIN_ID = '6848b5408a456b7966abff6c';
+  const API_KEY = '$2a$10$bX1oabmWExsCeOTrdjS7iu.wGZVCe35Z4UWFYPrbsb7ArvlK.72mq';
+  const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-  <script>
-    // Replace with your JSONBin.io credentials
-    const BIN_ID = '6848b5408a456b7966abff6c';
-const API_KEY = '$2a$10$fEW1fUFxfn39FGihUfdkI.Myc9MuZ8PGXYh1zzeaLUSTu7VjC8XGW';
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-
-
-    async function fetchRating() {
-      try {
-        const resp = await fetch(BIN_URL + '/latest', {
-          headers: { 'X-Master-Key': API_KEY }
-        });
-        const json = await resp.json();
-        const { total, count } = json.record;
-        const avg = (total / count).toFixed(2);
-        document.getElementById('rating-value').textContent = `Average Rating: ${avg} ⭐ (${count} votes)`;
-      } catch (e) {
-        document.getElementById('rating-value').textContent = 'Unable to load ratings.';
-      }
-    }
-
-    async function submitRating(value) {
-      try {
-        // fetch current
-        const resp = await fetch(BIN_URL + '/latest', { headers: { 'X-Master-Key': API_KEY } });
-        const json = await resp.json();
-        const { total, count } = json.record;
-        // update
-        const updated = { total: total + value, count: count + 1 };
-        await fetch(BIN_URL, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Master-Key': API_KEY,
-            'X-Bin-Versioning': 'false'
-          },
-          body: JSON.stringify(updated)
-        });
-        fetchRating();
-        alert('Thanks for rating!');
-      } catch (e) {
-        console.error(e);
-        alert('Failed to submit rating.');
-      }
-    }
-
-    // Star click handlers
-    document.querySelectorAll('.star').forEach(star => {
-      star.addEventListener('click', () => {
-        const val = parseInt(star.getAttribute('data-value'));
-        submitRating(val);
+  async function fetchRating() {
+    try {
+      const resp = await fetch(BIN_URL + '/latest', {
+        headers: { 'X-Master-Key': API_KEY }
       });
-    });
+      const json = await resp.json();
+      const { total, count } = json.record;
+      const avg = count > 0 ? (total / count).toFixed(2) : "0.00";
+      document.getElementById('rating-value').textContent = `Average Rating: ${avg} ⭐ (${count} votes)`;
+    } catch (e) {
+      console.error(e);
+      document.getElementById('rating-value').textContent = 'Unable to load ratings.';
+    }
+  }
 
-    // Initial load
-    fetchRating();
-  </script>
+  async function submitRating(value) {
+    try {
+      const resp = await fetch(BIN_URL + '/latest', {
+        headers: { 'X-Master-Key': API_KEY }
+      });
+      const json = await resp.json();
+      const { total, count } = json.record;
+      const updated = { total: total + value, count: count + 1 };
+      await fetch(BIN_URL, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': API_KEY,
+          'X-Bin-Versioning': 'false'
+        },
+        body: JSON.stringify(updated)
+      });
+      fetchRating();
+      alert('Thanks for rating!');
+    } catch (e) {
+      console.error(e);
+      alert('Failed to submit rating.');
+    }
+  }
+
+  document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', () => {
+      const val = parseInt(star.getAttribute('data-value'));
+      submitRating(val);
+    });
+  });
+
+  fetchRating();
+</script>
+
 
 </body>
 </html>
