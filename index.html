@@ -1,221 +1,203 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dandyism - Religion of Dandy's World</title>
-  <link rel="icon" href="https://i.imgur.com/fXU0zZk.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Our SMP Realm!</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Comic Neue', cursive;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #b0e4c0, #fcd6ff);
-      color: #333;
-      animation: fadeIn 1s ease-in;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.imgur.com/WU7oI8g.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+```
+.overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
-    nav {
-      background: linear-gradient(to right, #ffb6c1, #ffecb3);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: auto;
+}
 
-    nav a {
-      color: #333;
-      padding: 15px 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease, transform 0.2s ease;
-      border-radius: 10px;
-      cursor: pointer;
-    }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #00ffae;
+}
 
-    nav a:hover {
-      background-color: #fff;
-      transform: scale(1.05);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
 
-    .tab-content {
-      display: none;
-      padding: 40px 20px;
-      margin: 10px;
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      animation: fadeIn 0.6s ease-out;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.features {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    .tab-content.active {
-      display: block;
-    }
+.invite-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #00c2ff;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  margin-bottom: 30px;
+}
 
-    h2, h3 {
-      color: #7c2d94;
-      text-shadow: 1px 1px #fff;
-    }
+.invite-btn:hover {
+  background-color: #009ccf;
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
+/* Rating Stars */
+.rating {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.star {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+.star.selected,
+.star:hover,
+.star:hover ~ .star {
+  color: #ffd700;
+}
 
-    img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      margin: 10px 0;
-      transition: transform 0.3s ease;
-    }
+#rating-value {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
 
-    img:hover {
-      transform: scale(1.03);
-    }
+.footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+```
 
-    pre {
-      background: #f3f3f3;
-      padding: 15px;
-      border-left: 4px solid #7c2d94;
-      white-space: pre-wrap;
-      border-radius: 8px;
-      font-size: 16px;
-      font-family: 'Courier New', Courier, monospace;
-      line-height: 1.4;
-      max-height: 400px;
-      overflow-y: auto;
-    }
   </style>
 </head>
 <body>
-  <nav>
-    <a onclick="showTab('dandyism')">Dandyism</a>
-    <a onclick="showTab('sproutism')">Sproutism</a>
-    <a onclick="showTab('astroism')">Astroism</a>
-    <a onclick="showTab('shellyism')">Shellyism</a>
-    <a onclick="showTab('bobetteism')">Bobetteism</a>
-    <a onclick="showTab('veeism')">Veeism</a>
-    <a onclick="showTab('bassieism')">Bassieism</a>
-    <a onclick="showTab('pebbleism')">Pebbleism</a>
-    <a onclick="showTab('dandyible')">Dandyible</a>
-    <a onclick="showTab('gallery')">Gallery</a>
-  </nav>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>🌍 Welcome to Our Realm SMP!</h1>
+    <h2>✨ Java-like Bedrock SMP with Shops & Cool Features</h2>
+    <div class="features">
+      ✅ Java aesthetics on Bedrock<br>
+      🛒 Better in-game Shop System<br>
+      🛠️ New fun & QoL features<br>
+      👥 Friendly SMP community<br>
+      💎 Makes Minecraft more enjoyable!
+    </div>
 
-  <section id="dandyism" class="tab-content active">
-    <h2>Dandyism</h2>
-    <p>Dandyism centers around Dandy, the gentle and whimsical creator of the Toon world. He represents joy, creativity, and unconditional love. His followers seek to spread kindness, laughter, and vibrant imagination, believing that joy is the purest form of worship. Dandy is often depicted as a dandy lion with sparkles and stripes, dancing under a rainbow sky.</p>
-  </section>
+```
+<!-- Invite Button -->
+<a class="invite-btn" href="https://realms.gg/hJGYSKBn2fsMHeY" target="_blank">👉 Join the Realm Now</a>
 
-  <section id="sproutism" class="tab-content">
-    <h2>Sproutism</h2>
-    <p>Sproutism honors Sprout, the green guardian of life and growth. Sprout protects the innocent and shelters those in need. Worshippers of Sproutism tend gardens, nurture life, and believe in starting small to grow mighty. It's a humble and earthy path, grounded in kindness and courage.</p>
-  </section>
+<!-- Background Music -->
+<audio id="bg-music" src="music.mp3" autoplay loop controls></audio>
 
-  <section id="astroism" class="tab-content">
-    <h2>Astroism</h2>
-    <p>Astroism gazes to the stars, inspired by Astro, the dreamy visionary who walks among constellations. Astro guides dreamers and thinkers, and his followers seek wisdom through imagination, introspection, and stargazing. Astroism believes every star is a soul, and every dream a prophecy.</p>
-  </section>
+<!-- Rating System -->
+<div class="rating" id="star-container">
+  <span class="star" data-value="1">&#9733;</span>
+  <span class="star" data-value="2">&#9733;</span>
+  <span class="star" data-value="3">&#9733;</span>
+  <span class="star" data-value="4">&#9733;</span>
+  <span class="star" data-value="5">&#9733;</span>
+</div>
+<p id="rating-value">Average Rating: Loading...</p>
 
-  <section id="shellyism" class="tab-content">
-    <h2>Shellyism</h2>
-    <p>Shellyism follows Shelly, the motherly protector wrapped in blankets of compassion. She comforts the weary, shelters the lost, and teaches love in silence. Devotees of Shellyism create cozy sanctuaries and offer warmth to all who pass through their lives.</p>
-  </section>
+<div class="footer">
+  Made for Minecraft Bedrock players | Designed for fun 🧱
+</div>
+```
 
-  <section id="bobetteism" class="tab-content">
-    <h2>Bobetteism</h2>
-    <p>Bobetteism embraces the chaos of fun and surprise. Bobette, the giggling spirit of joy and trouble, dances wildly through pranks and parties. Her followers believe in finding light in darkness through laughter, unexpected kindness, and spontaneous joy.</p>
-  </section>
-
-  <section id="veeism" class="tab-content">
-    <h2>Veeism</h2>
-    <p>Veeism is about bold choices and radiant truth. Vee blazes like the sun, pushing others to rise, fight, and shine. Her believers seek courage in challenges and speak truth even when it shakes. Her temples are fields of gold and her voice is thunder and sparkle.</p>
-  </section>
-
-  <section id="bassieism" class="tab-content">
-    <h2>Bassieism</h2>
-    <p>Bassieism stands in stillness. Bassie is a calm river under a pink sky — gentle, soft, and unshakable. Her followers value peace, resilience, and deep inner strength. Meditation and soft speech are paths to understanding her mystery.</p>
-  </section>
-
-  <section id="pebbleism" class="tab-content">
-    <h2>Pebbleism</h2>
-    <p>Pebbleism honors Pebble, the smallest and most fierce. Though tiny, Pebble's spirit echoes like thunder. His believers find greatness in humility and power in persistence. They believe even a pebble can cause a mountain to move — with courage, laughter, and grit.</p>
-  </section>
-
-  <section id="dandyible" class="tab-content">
-    <h2>The Dandyible</h2>
-
-    <h3>Book of Genesisview</h3>
-    <pre>
-1:1 In the beginning, the Gardenview Educational Center floated gently in the clouds...
-1:2 The Toons were not yet born; the halls were silent and the lights dim.
-1:3 Then Dandy said, "Let there be joy," and from his hand, the first spark of life ignited.
-    </pre>
-
-    <h3>Book of Hearts</h3>
-    <pre>
-1:1 These are the laws spoken by Dandy, said with joy and not with judgment:
-1:2 Love one another as flowers love the sun.
-1:3 Laugh often, and your heart shall never be empty.
-    </pre>
-
-    <h3>Book of Parables</h3>
-    <pre>
-1:1 Dandy spake unto the Toons in riddles and rhymes,
-1:2 For wisdom lives in laughter and love in the dance of the fool.
-1:3 Seek not the straight path, but the joyous wander.
-    </pre>
-
-    <h3>Book of Psalms of Dandy</h3>
-    <pre>
-1:1 O Dandy, Thou who walketh in the green meadows of joy,
-1:2 Hear our bubblegum praise, our songs of colors bright and light.
-1:3 May our days be filled with sparkles and dreams as sweet as honey.
-    </pre>
-
-    <h3>Book of Revelationview</h3>
-    <pre>
-1:1 And a vision came unto Shelly in her sleep,
-1:2 And lo, a great rainbow did descend upon Dandy's World,
-1:3 Bringing hope, laughter, and peace eternal.
-    </pre>
-  </section>
-
-  <section id="gallery" class="tab-content">
-    <h2>Dandy's World Gallery</h2>
-    <img src="https://i.redd.it/rea9vje3bsee1.jpeg" alt="Dandy in Elevator" />
-    <img src="https://i.redd.it/jcby2j0lf5ee1.png" alt="Dandy with a bunny" />
-    <img src="https://i.imgur.com/fXU0zZk.png" alt="Dandy logo" />
-    <p>More images coming soon...</p>
-  </section>
+  </div>
 
   <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
+    // Replace with your JSONBin.io credentials
+    const BIN_ID = 'YOUR_BIN_ID';
+    const API_KEY = 'YOUR_JSONBIN_API_KEY';
+    const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+    async function fetchRating() {
+      try {
+        const resp = await fetch(BIN_URL + '/latest', {
+          headers: { 'X-Master-Key': API_KEY }
+        });
+        const json = await resp.json();
+        const { total, count } = json.record;
+        const avg = (total / count).toFixed(2);
+        document.getElementById('rating-value').textContent = `Average Rating: ${avg} ⭐ (${count} votes)`;
+      } catch (e) {
+        document.getElementById('rating-value').textContent = 'Unable to load ratings.';
+      }
     }
+
+    async function submitRating(value) {
+      try {
+        // fetch current
+        const resp = await fetch(BIN_URL + '/latest', { headers: { 'X-Master-Key': API_KEY } });
+        const json = await resp.json();
+        const { total, count } = json.record;
+        // update
+        const updated = { total: total + value, count: count + 1 };
+        await fetch(BIN_URL, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': API_KEY,
+            'X-Bin-Versioning': 'false'
+          },
+          body: JSON.stringify(updated)
+        });
+        fetchRating();
+        alert('Thanks for rating!');
+      } catch (e) {
+        console.error(e);
+        alert('Failed to submit rating.');
+      }
+    }
+
+    // Star click handlers
+    document.querySelectorAll('.star').forEach(star => {
+      star.addEventListener('click', () => {
+        const val = parseInt(star.getAttribute('data-value'));
+        submitRating(val);
+      });
+    });
+
+    // Initial load
+    fetchRating();
   </script>
+
 </body>
 </html>
-
